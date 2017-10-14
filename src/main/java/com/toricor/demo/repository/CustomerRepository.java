@@ -21,7 +21,7 @@ public class CustomerRepository {
     }
 
     public Customer save(Customer customer) {
-        return customerMap.put(customer.getId(), customer));
+        return customerMap.put(customer.getId(), customer);
     }
 
     public void delete(Integer customerId) {
