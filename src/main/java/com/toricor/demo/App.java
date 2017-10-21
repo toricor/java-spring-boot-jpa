@@ -16,18 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @SpringBootApplication
-public class App implements CommandLineRunner {
-
-	@Autowired
-	CustomerRepository customerRepository;
-
-	@Override
-	public void run(String... strings) throws Exception {
-        Customer created = customerRepository.save(new Customer(null, "Hidetoshi", "Dekisugi"));
-        System.out.println(created + " is created!");
-        customerRepository.findAll()
-				.forEach(System.out::println);
-	}
+public class App{
 
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
