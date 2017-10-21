@@ -18,6 +18,8 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
+    public List<Customer> findAllOrderByName() { return customerRepository.findAllOrderByName(); }
+
     public Customer findOne(Integer id) {
         return customerRepository.findOne(id);
     }

@@ -21,6 +21,12 @@ public class CustomerController {
         return customers;
     }
 
+    @RequestMapping(value = "order", method = RequestMethod.GET)
+    List<Customer> getCustomersOrderByName() {
+        List<Customer> customers = customerService.findAllOrderByName();
+        return customers;
+    }
+
     // 顧客1件取得
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     Customer getCustomer(@PathVariable Integer id) {
