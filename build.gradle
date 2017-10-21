@@ -24,7 +24,7 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile 'com.github.marcosemiao.log4jdbc:log4jdbc:0.2.0'
