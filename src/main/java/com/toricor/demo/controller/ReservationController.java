@@ -1,0 +1,55 @@
+package com.toricor.demo.controller;
+
+import com.toricor.demo.domain.Reservation;
+import com.toricor.demo.domain.ExtendedReservation;
+import com.toricor.demo.service.ReservationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("api/reservations")
+public class ReservationController {
+    @Autowired
+    ReservationService reservationService;
+
+    // 予約全件取得
+    @RequestMapping(method = RequestMethod.GET)
+    List<Reservation> getReservations() {
+        List<Reservation> reservations = reservationService.findAll();
+        return reservations;
+    }
+
+    // 予約全件取得(Joined)
+    @RequestMapping(value = "joined",method = RequestMethod.GET)
+    List<ExtendedReservation> getReservationsJoined() {
+        List<ExtendedReservation> reservations = reservationService.findAllJoined();
+        return reservations;
+    }
+    // 予約1件取得
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    Reservation getReservation(@PathVariable Integer id) {
+        Reservation reservation = reservationService.findOne(id);
+        return reservation;
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    void postReservations(@RequestBody Reservation reservation) {
+        reservationService.create(reservation);
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    void putReservation(@PathVariable Integer id, @RequestBody Reservation reservation) {
+        reservation.setId(id);
+        reservationService.update(reservation);
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void deleteReservation(@PathVariable Integer id) {
+        reservationService.delete(id);
+    }
+}
